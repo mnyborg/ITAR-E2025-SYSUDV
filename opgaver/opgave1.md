@@ -20,5 +20,5 @@ classDiagram
       titel: string
       isbn: string
     }
-    Laaner "1" -- "0..*" Bog : låner
-    Bog "0..1" -- "1" Laaner : udlånt_til
+    Laaner "1" --> "0..*" Bog : låner
+    Bog "0..1" --> "1" Laaner : udlånt_til
