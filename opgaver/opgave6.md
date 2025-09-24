@@ -8,6 +8,8 @@ Klasser: Hold, Spiller, Kamp, Dommer.
 
 Vis at Kamp refererer til to forskellige Hold (hjemme/ude).
 
+
+
 ```mermaid
 classDiagram
     class Hold {
@@ -27,8 +29,11 @@ classDiagram
       dommerId: string
       navn: string
     }
-
+ 
     Hold "1" --> "0..*" Spiller : består_af
     Kamp "1" --> "1" Hold : hjemmehold
     Kamp "1" -- >"1" Hold : udehold
     Dommer "1" --> "0..*" Kamp : dømmer
+    
+    ```
+  
