@@ -19,7 +19,9 @@ classDiagram
     Movie "1" -- "0..*" Role : contains
     Role "0..1" -- "1" Movie : appears_in
 ```
-## Trin1:
+## Eksempel: Domænemodellering
+This school has many students, distributed into classes, each student is enrolled in one class. Each class has many hours in various subjects, and these subjects are held in many different rooms. This school has several teachers who teach more classes ………
+## Trin1: Indentificér klasser
 ```mermaid
 classDiagram
     class School
@@ -30,7 +32,7 @@ classDiagram
     class Teacher
     class Hour
 ```
-## Trin2:
+## Trin2: Identificér associationer
 ```mermaid
 classDiagram
     class School
@@ -52,7 +54,7 @@ classDiagram
     Hour --> Room
     Hour --> Teacher
 ```
-## Trin 3:
+## Trin 3: Identificér multiplicitet
 
 ```mermaid
 classDiagram
@@ -92,7 +94,7 @@ classDiagram
     Subject "1" --> "0..*" Hour
     Room "1" --> "0..*" Hour
 ```
-## Trin 4:
+## Trin 4: Fuldstændigt klassediagram med relevante attributter
 ```mermaid
 classDiagram
     class School {
@@ -154,36 +156,3 @@ classDiagram
     Hour "1" --> "1" Room
     Hour "1" --> "1" Teacher
 ```
-"" Eksemel med identifikaitons af attributer.
-```mermaid
-classDiagram
-    class Book {
-      +bookId: UUID
-      +isbn: String
-      +title: String
-    }
-
-    class Author {
-      +authorId: UUID
-      +fullName: String
-    }
-
-    class Member {
-      +memberId: UUID
-      +fullName: String
-      +email: String
-      +joinedAt: Date
-    }
-
-    class Loan {
-      +loanId: UUID
-      +borrowedOn: Date
-      +dueOn: Date
-      +returnedOn: Date?   %% null => active
-    }
-
-    %% Relationships
-    Member "1" --> "0..*" Loan
-    Book "1" --> "0..*" Loan
-    Book "0..*" -- "0..*" Author
-
