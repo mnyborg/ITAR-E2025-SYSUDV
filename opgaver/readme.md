@@ -196,10 +196,10 @@ classDiagram
     }
 
     User "1" --> "*" Order : laver
-    Order "1" --> "*" MenuItem
-    Restaurant "1" --> "*" MenuItem
-    Order "1" --> "1" Restaurant
-    Order "1" --> "1" Payment
-    Order "1" --> "1" Delivery
+    Order "1" --> "*" MenuItem : indeholder
+    Restaurant "1" --> "*" MenuItem : tilbyder
+    Order "1" --> "1" Restaurant : tilknyttet
+    Order "1" --> "1" Payment : har en
+    Order "1" --> "1" Delivery : har en
 
 ```
