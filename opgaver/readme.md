@@ -156,3 +156,50 @@ classDiagram
     Hour "1" --> "1" Room
     Hour "1" --> "1" Teacher
 ```
+## Eksempel: Domain model baseret på User Journy
+
+```mermaid
+classDiagram
+    class User {
+      -name
+      -phone
+      -address
+    }
+
+    class Restaurant {
+      -name
+      -address
+      -openingHours
+    }
+
+    class MenuItem {
+      -name
+      -price
+      -description
+    }
+
+    class Order {
+      -date
+      -totalPrice
+      -status
+    }
+
+    class Payment {
+      -type
+      -status
+    }
+
+    class Delivery {
+      -deliveryAddress
+      -time
+      -courier
+    }
+
+    User "1" --> "*" Order : laver
+    Order "1" --> "*" MenuItem
+    Restaurant "1" --> "*" MenuItem
+    Order "1" --> "1" Restaurant
+    Order "1" --> "1" Payment
+    Order "1" --> "1" Delivery
+
+```
