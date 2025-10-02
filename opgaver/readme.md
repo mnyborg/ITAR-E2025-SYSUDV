@@ -172,7 +172,7 @@ classDiagram
       -openingHours
     }
 
-    class MenuItem {
+    class Dish {
       -name
       -price
       -description
@@ -196,8 +196,8 @@ classDiagram
     }
 
     User "1" --> "*" Order : laver
-    Order "1" --> "*" MenuItem : indeholder
-    Restaurant "1" --> "*" MenuItem : tilbyder
+    Order "1" --> "*" Dish : indeholder
+    Restaurant "1" --> "*" Dish : tilbyder
     Order "1" --> "1" Restaurant : tilknyttet
     Order "1" --> "1" Payment : har en
     Order "1" --> "1" Delivery : har en
