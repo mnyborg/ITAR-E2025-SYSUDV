@@ -34,4 +34,44 @@ Efterfølgende handling
   - Om Sofie husker at checke ud
   - Om hun kan få en rimelig og hurtig løsning ved fejl
 
-## Forslag til domænemodel (i Mermaid)
+## Forslag til domænemodel (i Mermaid)  
+```mermaid
+classDiagram
+    class Bruger {
+        +id : int
+        +navn : String
+        +email : String
+    }
+
+    class Rejsekort {
+        +kortId : int
+        +saldo : double
+    }
+
+    class Rejse {
+        +rejseId : int
+        +startTid : datetime
+        +slutTid : datetime
+        +pris : double
+        +status : String  // fx "afsluttet", "glemt check ud"
+    }
+
+    class Station {
+        +stationId : int
+        +navn : String
+    }
+
+    class Klage {
+        +klageId : int
+        +dato : datetime
+        +status : String
+    }
+
+    Bruger "1" --> "1" Rejsekort
+    Rejsekort "1" --> "*" Rejse
+    Rejse "1" --> "1" Station : start
+    Rejse "1" --> "1" Station : slut
+    Bruger "1" --> "*" Klage
+    Klage "*" --> "1" Rejse
+```
+
