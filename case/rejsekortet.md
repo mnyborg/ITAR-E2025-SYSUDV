@@ -98,55 +98,101 @@ journey
 ## Flowchart med touchpoints, pains & gains
 ```mermaid
 flowchart TD
-    %% Aktører & systemer
-    U[Sofie (bruger)]
-    CI[Check-ind stander]
-    TOG[Tog/bus (transport)]
-    ST[Station (ankomst)]
-    APP[Rejsekort app / kontooversigt]
-    WEB[Rejsekort.dk (refundering)]
-    KS[Kundeservice]
+  U["Sofie (bruger)"]
+  CI["Check-ind stander"]
+  TOG["Tog/bus (transport)"]
+  ST["Station (ankomst)"]
+  APP["Rejsekort app / kontooversigt"]
+  WEB["Rejsekort.dk (refundering)"]
+  KS["Kundeservice"]
 
-    %% Rejsens forløb
-    U -->|tjekker saldo| APP
-    U -->|ankommer| CI
-    CI -->|lys/lyd bekræfter| U
-    U -->|rejser| TOG
-    U -->|ankommer| ST
-    ST -->|mange stimuli/tidspres| U
-    U -.->|glemmer check ud (pain)| ST
+  P1["Pain - tidspres -> glemt check-ud"]
+  P2["Pain - makspris"]
+  P3["Pain - besværlig / uklar refundering"]
 
-    %% Efter rejsen
-    U -->|opdager makspris (pain)| APP
-    U -->|anmoder om refundering| WEB
-    WEB -->|kræver oplysninger/begrundelse (pain)| U
-    WEB -->|status/opdatering| U
-    U -->|kontakter ved behov| KS
-    KS -->|vejledning/afgørelse| U
+  G1["Gain - tydelig check-ind feedback"]
+  G2["Gain - transaktionsoversigt"]
+  G3["Gain - mulighed for refusion"]
 
-    %% Pains
-    P1[[Pain: Tidspres ved ankomst → glemt check-ud]]
-    P2[[Pain: Makspris udløst]]
-    P3[[Pain: Besværlig/uklar refundering]]
-    ST -. trigger .-> P1
-    APP -. viser .-> P2
-    WEB -. formular/ventetid .-> P3
+  M1["MoT - check ind bekræftes tydeligt"]
+  M2["MoT - check ud gennemføres eller glemmes"]
+  M3["MoT - retfærdig og hurtig refusion"]
 
-    %% Gains
-    G1[[Gain: Hurtig, enkel check-ind feedback]]
-    G2[[Gain: Oversigt over transaktioner]]
-    G3[[Gain: Mulighed for refusion ved fejl]]
-    CI -. positiv feedback .-> G1
-    APP -. transparens .-> G2
-    WEB -. mulighed .-> G3
+  U --> APP
+  U --> CI
+  CI --> U
+  U --> TOG
+  U --> ST
 
-    %% Moments of Truth
-    M1{{MoT: Check ind bekræftes tydeligt}}
-    M2{{MoT: Check ud gennemføres eller glemmes}}
-    M3{{MoT: Retfærdig og hurtig refusion}}
-    CI --> M1
-    ST --> M2
-    WEB --> M3
+  U -.-> ST
+  ST --> P1
+
+  U --> APP
+  APP --> P2
+
+  U --> WEB
+  WEB --> U
+  WEB --> P3
+
+  CI --> G1
+  APP --> G2
+  WEB --> G3
+
+  CI --> M1
+  ST --> M2
+  WEB --> M3
+
+```
+
+```mermaid
+flowchart TD
+  U["Sofie (bruger)"]
+  CI["Check-ind stander"]
+  TOG["Tog/bus (transport)"]
+  ST["Station (ankomst)"]
+  APP["Rejsekort app / kontooversigt"]
+  WEB["Rejsekort.dk (refundering)"]
+  KS["Kundeservice"]
+
+  P1["Pain - tidspres -> glemt check-ud"]
+  P2["Pain - makspris"]
+  P3["Pain - besværlig / uklar refundering"]
+
+  G1["Gain - tydelig check-ind feedback"]
+  G2["Gain - transaktionsoversigt"]
+  G3["Gain - mulighed for refusion"]
+
+  M1["MoT - check ind bekræftes tydeligt"]
+  M2["MoT - check ud gennemføres eller glemmes"]
+  M3["MoT - retfærdig og hurtig refusion"]
+
+  U -->|tjekker saldo| APP
+  U -->|ankommer| CI
+  CI -->|lys/lyd bekræfter| U
+  U -->|rejser| TOG
+  U -->|ankommer| ST
+  ST -->|mange stimuli / tidspres| U
+  U -.->|glemmer check ud (pain)| ST  
+
+  U -->|opdager makspris (pain)| APP
+  U -->|anmoder om refundering| WEB
+  WEB -->|kræver oplysninger / begrundelse (pain)| U
+  WEB -->|status / opdatering| U
+  U -->|kontakter ved behov| KS
+  KS -->|vejledning / afgørelse| U
+
+  ST --> P1
+  APP --> P2
+  WEB --> P3
+
+  CI -->|positiv feedback| G1
+  APP -->|transparens| G2
+  WEB -->|mulighed| G3
+
+  CI --> M1
+  ST --> M2
+  WEB --> M3
+
 ```
 
 
