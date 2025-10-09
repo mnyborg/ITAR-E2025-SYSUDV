@@ -9,7 +9,7 @@
 - Unordered list
 1. Ordered list
 
-[Link text](https://example.com)
+[Link text](https://example.com)  
 ![Alt text](image.png)
 
 ```code block```  <!-- or fenced blocks below -->
